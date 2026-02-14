@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - NotebookLM Style</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="app-title">Student Dashboard</h1>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <button class="nav-btn active" data-section="dashboard">
+                            <span class="nav-icon">📊</span>
+                            <span class="nav-text">Dashboard</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="subjects">
+                            <span class="nav-icon">📚</span>
+                            <span class="nav-text">Subjects</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="timetable">
+                            <span class="nav-icon">📅</span>
+                            <span class="nav-text">Timetable</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="notes">
+                            <span class="nav-icon">📝</span>
+                            <span class="nav-text">Notes</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="tasks">
+                            <span class="nav-icon">✅</span>
+                            <span class="nav-text">Tasks</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="marks">
+                            <span class="nav-icon">🧠</span>
+                            <span class="nav-text">AI Quiz</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard-section">
+                <header class="section-header">
+                    <h2 class="section-title">Dashboard</h2>
+                    <p class="section-subtitle">Overview of your academic progress</p>
+                </header>
+                
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-title">Total Subjects</h3>
+                        <p class="stat-value" id="totalSubjects">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-title">Pending Tasks</h3>
+                        <p class="stat-value" id="pendingTasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-title">Average Marks</h3>
+                        <p class="stat-value" id="averageMarks">0%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-title">Total Notes</h3>
+                        <p class="stat-value" id="totalNotes">0</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="recent-activity">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list" id="recentActivity">
+                            <!-- Activity items will be populated here -->
+                        </div>
+                    </div>
+                    <div class="upcoming-events">
+                        <h3>Study Timer</h3>
+                        <div class="timer-container">
+                            <input type="number" id="timerInput" class="timer-input" placeholder="Minutes (press Enter)" min="1">
+                            <div id="timerDisplay" class="timer-display">00:00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="progress-section">
+                    <h3>Learning Progress</h3>
+                    <div class="progress-container">
+                        <progress id="progressBar" class="progress-bar" max="100" value="0"></progress>
+                        <span id="progressText" class="progress-text">0%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subjects Section -->
+            <section class="content-section" id="subjects-section">
+                <header class="section-header">
+                    <h2 class="section-title">Subjects</h2>
+                    <input type="text" id="subjectInput" class="subject-input" placeholder="Type subject name and press Enter...">
+                </header>
+                
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- Subject cards will be populated here -->
+                </div>
+            </section>
+
+            <!-- Timetable Section -->
+            <section class="content-section" id="timetable-section">
+                <header class="section-header">
+                    <h2 class="section-title">Timetable</h2>
+                </header>
+                
+                <div class="timetable-form">
+                    <div class="form-row">
+                        <select id="timetableDay" class="timetable-select">
+                            <option value="">Select Day</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                        <input type="time" id="timetableTime" class="timetable-time">
+                        <input type="text" id="timetableSubject" class="timetable-subject" placeholder="Subject (press Enter to add)">
+                    </div>
+                </div>
+                
+                <div class="timetable-container">
+                    <div class="timetable-grid" id="timetableGrid">
+                        <!-- Timetable will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notes Section -->
+            <section class="content-section" id="notes-section">
+                <header class="section-header">
+                    <h2 class="section-title">Notes</h2>
+                    <p class="section-subtitle">Auto-saves as you type</p>
+                </header>
+                
+                <div class="notes-container">
+                    <textarea 
+                        id="notesTextarea" 
+                        class="notes-textarea" 
+                        placeholder="Start typing your notes here... Everything is automatically saved."
+                    ></textarea>
+                </div>
+            </section>
+
+            <!-- Tasks Section -->
+            <section class="content-section" id="tasks-section">
+                <header class="section-header">
+                    <h2 class="section-title">Tasks</h2>
+                    <input type="text" id="taskInput" class="task-input" placeholder="Type task and press Enter...">
+                </header>
+                
+                <div class="tasks-container">
+                    <div class="tasks-list" id="tasksList">
+                        <!-- Task items will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Marks Section -->
+            <section class="content-section" id="marks-section">
+                <header class="section-header">
+                    <h2 class="section-title">AI Quiz</h2>
+                </header>
+                
+                <div class="quiz-container">
+                    <div class="quiz-input-section">
+                        <div class="quiz-form-group">
+                            <label for="quizText">Study Text:</label>
+                            <textarea id="quizText" class="quiz-textarea" placeholder="Paste your study material here..."></textarea>
+                        </div>
+                        
+                        <div class="quiz-form-group">
+                            <label for="quizQuestions">Number of Questions:</label>
+                            <input type="number" id="quizQuestions" class="quiz-number-input" min="1" max="10" value="5">
+                        </div>
+                        
+                        <button id="generateQuizBtn" class="btn-primary">Generate Quiz</button>
+                    </div>
+                    
+                    <div class="quiz-output-section">
+                        <div id="quizOutput" class="quiz-output">
+                            <p class="quiz-placeholder">Enter your study text and click "Generate Quiz" to create multiple choice questions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Container -->
+    <div class="modal-overlay" id="modalOverlay">
+        <!-- Modals will be dynamically inserted here -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
